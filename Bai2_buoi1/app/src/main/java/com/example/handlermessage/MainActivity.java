@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Khởi tạo các TextView và Button
+
         textView1 = findViewById(R.id.textView1);
         textView2 = findViewById(R.id.textView2);
         textView3 = findViewById(R.id.textView3);
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
 
-        // Tạo Handler để xử lý các thông điệp từ các thread
+
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Thiết lập button1 để bắt đầu/ dừng thread1
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Thiết lập button2 để bắt đầu/ dừng thread2
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Thiết lập button3 để bắt đầu/ dừng thread3
+
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Thread 1: Sinh số ngẫu nhiên từ 50-100
+
     private void startThread1() {
         thread1 = new Thread(new Runnable() {
             @Override
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         thread1.start();
     }
 
-    // Thread 2: Sinh số lẻ, bắt đầu từ 1
+
     private void startThread2() {
         thread2 = new Thread(new Runnable() {
             int oddNumber = 1;
@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         thread2.start();
     }
 
-    // Thread 3: Sinh các số nguyên từ 0
     private void startThread3() {
         thread3 = new Thread(new Runnable() {
             int number = 0;
