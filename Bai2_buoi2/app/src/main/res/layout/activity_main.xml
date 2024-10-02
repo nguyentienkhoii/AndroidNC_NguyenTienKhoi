@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <Spinner
+        android:id="@+id/spinner_countries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dropDownHeight="350dp"
+    android:scrollbars="vertical"
+    android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnAddCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Country"
+        android:layout_below="@id/spinner_countries"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>
