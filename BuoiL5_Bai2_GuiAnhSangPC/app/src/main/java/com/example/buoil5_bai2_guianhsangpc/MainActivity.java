@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnSelectImage = findViewById(R.id.btnSelectImage);
         tvStatus = findViewById(R.id.tvStatus);
 
+        // Bắt sự kiện khi nhấn vào nút "Chọn ảnh"
         btnSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Mở gallery để chọn ảnh
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
@@ -49,17 +51,18 @@ public class MainActivity extends AppCompatActivity {
             tvStatus.setText("Trạng thái: Đã chọn ảnh, đang gửi...");
             sendImageToServer(selectedImageUri);
         } else {
-            tvStatus.setText("Trạng thái: Hủy chọn ảnh");
+            tvStatus.setText("Trạng thái: Không chọn ảnh");
         }
     }
 
+    // Gửi ảnh đến server
     private void sendImageToServer(Uri uri) {
         new Thread(() -> {
-            try (Socket socket = new Socket("192.168.2.11", 5556);
+            try (Socket socket = new Socket("192.168.2.11", 5555);
                  InputStream is = getContentResolver().openInputStream(uri);
                  OutputStream os = socket.getOutputStream()) {
 
-                byte[] buffer = new byte[10240];
+                byte[] buffer = new byte[10240]; // 10KB
                 int bytesRead;
                 while ((bytesRead = is.read(buffer)) > -1) {
                     os.write(buffer, 0, bytesRead);
